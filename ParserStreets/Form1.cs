@@ -42,8 +42,6 @@ namespace ParserStreets
                     var fileStream = openFileDialog.OpenFile();
                     streets = new List<string>();
 
-                   
-
                     using (StreamReader reader = new StreamReader(fileStream))
                     {
                         richTextBox1.Clear();
@@ -69,6 +67,7 @@ namespace ParserStreets
             }
         }
 
+        //Read's the file to the end
         private void button2_Click(object sender, EventArgs e)
         {
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
@@ -119,6 +118,7 @@ namespace ParserStreets
             }
         }
 
+        //Save formatted strings to a txt file
         private void Savebutton3_Click(object sender, EventArgs e)
         {
             Stream myStream;
@@ -154,7 +154,7 @@ namespace ParserStreets
             }
         }
 
-        //del \n
+        //Read the file line by line and removes all space characters at the end of each string
         private void button3_Click(object sender, EventArgs e)
         {
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
@@ -185,33 +185,30 @@ namespace ParserStreets
                         //<Body>
                         while ((s = reader.ReadLine()) != null)
                         {
-                            {
-                                //Get last entry of required symbol
-                                symbol_index = s.LastIndexOfAny(required_symbols);
-                                //while last entry == lenght of processed string -> continue processing
-                                while (symbol_index == (s.Length - 1))
-                                {
-                                    //If the required character is not the only character at the end of the line,
-                                    //first delete the last entry
-                                    if (symbol_index == (s.Length - 1))
-                                    {
-                                        while (symbol_index <= s.Length)//while index does not go beyond the line
-                                        {
-                                            if (symbol_index == s.Length)//if the index is equal to the length of the row
-                                            {
-                                                s = s.Remove(symbol_index - 1);//delete the last character of the row
-                                            }
-                                            symbol_index++;//moving the index to the end
-                                        }
-                                        //get the last entry of the searched character
-                                        symbol_index = s.LastIndexOfAny(required_symbols);
-                                    }
-                                }
-                                streets.Add(s);
-                                richTextBox1.Text += s;
-                                richTextBox1.Text += Environment.NewLine;
-
-                            }
+                            //Get last entry of required symbol
+							symbol_index = s.LastIndexOfAny(required_symbols);
+							//while last entry == lenght of processed string -> continue processing
+							while (symbol_index == (s.Length - 1))
+							{
+								//If the required character is not the only character at the end of the line,
+								//first delete the last entry
+								if (symbol_index == (s.Length - 1))
+								{
+									while (symbol_index <= s.Length)//while index does not go beyond the line
+									{
+										if (symbol_index == s.Length)//if the index is equal to the length of the row
+										{
+											s = s.Remove(symbol_index - 1);//delete the last character of the row
+										}
+										symbol_index++;//moving the index to the end
+									}
+									//get the last entry of the searched character
+									symbol_index = s.LastIndexOfAny(required_symbols);
+								}
+							}
+							streets.Add(s);
+							richTextBox1.Text += s;
+							richTextBox1.Text += Environment.NewLine;
                         }
                         //<EndOfBody>
                     }
@@ -219,6 +216,7 @@ namespace ParserStreets
             }
         }
 
+        //Read the file line by line and delite "/r/n" symbols
         private void button4_Click(object sender, EventArgs e)
         {
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
@@ -239,8 +237,6 @@ namespace ParserStreets
                     //Read the contents of the file into a stream
                     var fileStream = openFileDialog.OpenFile();
                     streets = new List<string>();
-
-
 
                     using (StreamReader reader = new StreamReader(fileStream))
                     {
