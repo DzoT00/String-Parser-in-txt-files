@@ -1,2 +1,2 @@
 # String-Parser-in-txt-files
-Simple program for strings in txt files.
+A simple program for formatting strings in txt files.
