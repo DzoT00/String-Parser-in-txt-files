@@ -54,14 +54,6 @@ namespace ParserStreets
                             //<Body>
                             //if (s.Contains("//") && !s.Contains("///"))
                             {
-                                /*
-                                s = s.Substring(s.IndexOf("//"));
-                                s = s.TrimStart('/');
-                                s = s.Replace("#", "Назначение: ");
-                                s = s.Replace("@Comment", "");//
-                                s = s.Replace("@Methoood", "@Метод: ");
-                                */
-
                                 string t = @"";
                                 s = s.Insert(0, "\"");
                                 s = s.Insert(s.Length, "\"");
@@ -69,7 +61,6 @@ namespace ParserStreets
                                 streets.Add(s);
                                 richTextBox1.Text += s;
                                 richTextBox1.Text += Environment.NewLine;
-
                             }
                             //<EndOfBody>
                         }
@@ -258,15 +249,7 @@ namespace ParserStreets
                         while ((s = reader.ReadLine()) != null)
                         {
                             //<Body>
-                            //if (s.Contains("//") && !s.Contains("///"))
                             {
-                                /*
-                                s = s.Substring(s.IndexOf("//"));
-                                s = s.TrimStart('/');
-                                s = s.Replace("#", "Назначение: ");
-                                s = s.Replace("@Comment", "");//
-                                s = s.Replace("@Methoood", "@Метод: ");
-                                */
                                 s = s.Replace("\r\n", string.Empty);
                                 streets.Add(s);
                                 richTextBox1.Text += s;
