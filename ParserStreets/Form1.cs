@@ -49,7 +49,6 @@ namespace ParserStreets
                         bool isTitle = false;
                         while ((s = reader.ReadLine()) != null)
                         {
-                            //<Body>
                             //if (s.Contains("//") && !s.Contains("///"))
                             {
                                 string t = @"";
@@ -60,7 +59,6 @@ namespace ParserStreets
                                 richTextBox1.Text += s;
                                 richTextBox1.Text += Environment.NewLine;
                             }
-                            //<EndOfBody>
                         }
                     }
                 }
@@ -96,7 +94,6 @@ namespace ParserStreets
                         bool isTitle = false;
                         s = reader.ReadToEnd();
                         {
-                            //<Body>
                             //if (s.Contains("//") && !s.Contains("///"))
                             {
                                 /*
@@ -111,7 +108,6 @@ namespace ParserStreets
                                 //richTextBox1.Text += Environment.NewLine;
 
                             }
-                            //<EndOfBody>
                         }
                     }
                 }
@@ -182,7 +178,7 @@ namespace ParserStreets
                         string s;
                         Char[] required_symbols = { ' ' };
                         int symbol_index;
-                        //<Body>
+                        
                         while ((s = reader.ReadLine()) != null)
                         {
                             //Get last entry of required symbol
@@ -210,7 +206,6 @@ namespace ParserStreets
 							richTextBox1.Text += s;
 							richTextBox1.Text += Environment.NewLine;
                         }
-                        //<EndOfBody>
                     }
                 }
             }
@@ -244,7 +239,6 @@ namespace ParserStreets
                         string s;
                         while ((s = reader.ReadLine()) != null)
                         {
-                            //<Body>
                             {
                                 s = s.Replace("\r\n", string.Empty);
                                 streets.Add(s);
@@ -252,7 +246,6 @@ namespace ParserStreets
                                 richTextBox1.Text += Environment.NewLine;
 
                             }
-                            //<EndOfBody>
                         }
                     }
                 }
@@ -275,57 +268,3 @@ namespace ParserStreets
         }
     }
 }
-
-
-/*
-private void SOME_button_Click(object sender, EventArgs e)
-        {
-            using (OpenFileDialog openFileDialog = new OpenFileDialog())
-            {
-                var spreadsheetLocation = Path.Combine(Directory.GetCurrentDirectory());
-                var filePath = string.Empty;
-
-                openFileDialog.InitialDirectory = spreadsheetLocation;
-                openFileDialog.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
-                openFileDialog.FilterIndex = 2;
-                openFileDialog.RestoreDirectory = true;
-
-                if (openFileDialog.ShowDialog() == DialogResult.OK)
-                {
-                    //Get the path of specified file
-                    filePath = openFileDialog.FileName;
-
-                    //Read the contents of the file into a stream
-                    var fileStream = openFileDialog.OpenFile();
-                    streets = new List<string>();
-
-
-
-                    using (StreamReader reader = new StreamReader(fileStream))
-                    {
-                        richTextBox1.Clear();
-                        string s;
-                        while ((s = reader.ReadLine()) != null)
-                        {
-                            //<Body>
-                            //if (s.Contains("//") && !s.Contains("///"))
-                            {
-                                
-                                s = s.Substring(s.IndexOf("//"));
-                                s = s.TrimStart('/');
-                                s = s.Replace("#", "Назначение: ");
-                                s = s.Replace("@Comment", "");//
-                                s = s.Replace("@Methoood", "@Метод: ");
-
-                                streets.Add(s);
-                                richTextBox1.Text += s;
-                                richTextBox1.Text += Environment.NewLine;
-
-                            }
-                            //<EndOfBody>
-                        }
-                    }
-                }
-            }
-        }
-*/
