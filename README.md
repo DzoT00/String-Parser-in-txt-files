@@ -5,4 +5,4 @@ A simple program for formatting strings in txt files.
 - Read the file line by line and removes all space characters at the end of each string
 - Read the file line by line and delite "/r/n" symbols
 - Read the file to the end
-- Save formatted text in two different layouts: "line-byline" or "without line breaks".
+- Save formatted text in two different layouts: "line-by-line" or "without line breaks".
