@@ -17,7 +17,7 @@ namespace ParserStreets
         {
             InitializeComponent();
         }
-        List<string> streets;
+        List<string> formatted_lines;
 
         //ReadLine, take a string in quotation marks
         //and Insert "," after every string
@@ -40,7 +40,7 @@ namespace ParserStreets
 
                     //Read the contents of the file into a stream
                     var fileStream = openFileDialog.OpenFile();
-                    streets = new List<string>();
+                    formatted_lines = new List<string>();
 
                     using (StreamReader reader = new StreamReader(fileStream))
                     {
@@ -55,7 +55,7 @@ namespace ParserStreets
                                 s = s.Insert(0, "\"");
                                 s = s.Insert(s.Length, "\"");
                                 s = s.Insert(s.Length, ",");
-                                streets.Add(s);
+                                formatted_lines.Add(s);
                                 richTextBox1.Text += s;
                                 richTextBox1.Text += Environment.NewLine;
                             }
@@ -73,7 +73,7 @@ namespace ParserStreets
                 richTextBox1.Clear();
                 var spreadsheetLocation = Path.Combine(Directory.GetCurrentDirectory());
                 var filePath = string.Empty;
-                streets = new List<string>();
+                formatted_lines = new List<string>();
                 openFileDialog.InitialDirectory = spreadsheetLocation;
                 openFileDialog.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
                 openFileDialog.FilterIndex = 2;
@@ -86,7 +86,7 @@ namespace ParserStreets
 
                     //Read the contents of the file into a stream
                     var fileStream = openFileDialog.OpenFile();
-                    streets = new List<string>();
+                    formatted_lines = new List<string>();
 
                     using (StreamReader reader = new StreamReader(fileStream))
                     {
@@ -103,7 +103,7 @@ namespace ParserStreets
                                 s = s.Replace("@Comment", "");//
                                 s = s.Replace("@Methoood", "@Метод: ");
                                 */
-                                //streets.Add(s);
+                                formatted_lines.Add(s);//adding only one string in the List
                                 richTextBox1.Text += s;
                                 //richTextBox1.Text += Environment.NewLine;
 
@@ -132,14 +132,14 @@ namespace ParserStreets
                     {
                         if ((line_by_lineRadioButton.Checked) == true)
                         {
-                            foreach (string str in streets)
+                            foreach (string str in formatted_lines)
                             {
                                 writer.WriteLine(str);
                             }
                         }
                         else if ((arrayRadioButton.Checked) == true)
                         {
-                            foreach (string str in streets)
+                            foreach (string str in formatted_lines)
                             {
                                 writer.Write(str);
                             }
@@ -170,7 +170,7 @@ namespace ParserStreets
 
                     //Read the contents of the file into a stream
                     var fileStream = openFileDialog.OpenFile();
-                    streets = new List<string>();
+                    formatted_lines = new List<string>();
 
                     using (StreamReader reader = new StreamReader(fileStream))
                     {
@@ -202,7 +202,7 @@ namespace ParserStreets
 									symbol_index = s.LastIndexOfAny(required_symbols);
 								}
 							}
-							streets.Add(s);
+							formatted_lines.Add(s);
 							richTextBox1.Text += s;
 							richTextBox1.Text += Environment.NewLine;
                         }
@@ -231,7 +231,7 @@ namespace ParserStreets
 
                     //Read the contents of the file into a stream
                     var fileStream = openFileDialog.OpenFile();
-                    streets = new List<string>();
+                    formatted_lines = new List<string>();
 
                     using (StreamReader reader = new StreamReader(fileStream))
                     {
@@ -241,7 +241,7 @@ namespace ParserStreets
                         {
                             {
                                 s = s.Replace("\r\n", string.Empty);
-                                streets.Add(s);
+                                formatted_lines.Add(s);
                                 richTextBox1.Text += s;
                                 richTextBox1.Text += Environment.NewLine;
 
